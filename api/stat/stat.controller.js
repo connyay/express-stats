@@ -28,6 +28,9 @@ function getCount(cb) {
         cachedCount = data.count;
         cb(data.count);
       }
+    } else {
+      cachedCount = 0;
+      cb(0);
     }
   });
 }
