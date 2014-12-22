@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .section.number-section
+    .number-container
+      .odometer-container
+        #odometer.odometer.odometer-auto-theme
+  script.
+    var COUNT_ON_LOAD = #{count};
+  script(src='javascripts/count.js')
+  script(src='javascripts/odometer.js')
