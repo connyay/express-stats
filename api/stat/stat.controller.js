@@ -36,10 +36,22 @@ function getCount(cb) {
 }
 
 exports.index = function(req, res) {
-  getCount(function(count) {
-    res.render('index', {
-      count: count || 0
-    });
+  res.format({
+    html: function() {
+      getCount(function(count) {
+        res.render('index', {
+          count: count || 0
+        });
+      });
+    },
+    json: function() {
+      Stat.find({}, '-_id -__v').exec(function(err, stats) {
+        if (err) {
+          return handleError(res, err);
+        }
+        res.json(stats);
+      });
+    }
   });
 };
 

@@ -8,7 +8,7 @@ var StatSchema = new Schema({
         type: Number,
         default: 1
     },
-    host: String,
+    hostname: String,
     reported: {
         type: Date,
         default: Date.now
