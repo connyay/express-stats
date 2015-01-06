@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var config = require('./config/environment');
 
 // Connect to database
+console.log(config.mongo.uri);
 mongoose.connect(config.mongo.uri);
 
 
