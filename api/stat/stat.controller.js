@@ -52,6 +52,9 @@ exports.index = function(req, res) {
             });
         },
         json: function() {
+            if (!req.isInternalReq) {
+                return res.status(401).end();
+            }
             Stat.find({}, '-_id -__v').exec(function(err, stats) {
                 if (err) {
                     return handleError(res, err);
@@ -63,6 +66,9 @@ exports.index = function(req, res) {
 };
 
 exports.create = function(req, res) {
+    if (!req.isInternalReq) {
+        return res.status(401).end();
+    }
     Stat.create(req.body, function(err, stat) {
         if (err) {
             return handleError(res, err);
