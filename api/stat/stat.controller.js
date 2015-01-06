@@ -3,6 +3,12 @@
 var Stat = require('./stat.model');
 var shields = require('shields-lightweight');
 var cachedCount = 0;
+var messages = [' Beans mapped ', ' Proxies reversed ', ' Requests '];
+
+function random(list) {
+    return list[Math.floor((Math.random() * list.length))];
+}
+
 
 function handleError(res, err) {
     return res.send(500, err);
@@ -67,7 +73,8 @@ exports.create = function(req, res) {
 };
 
 exports.badge = function(req, res) {
-    var svgBadge = shields.svg(' Beans Mapped ', cachedCount, 'green', 'flat');
+    var message = random(messages);
+    var svgBadge = shields.svg(message, cachedCount, 'green', 'flat-square');
     res.writeHead(200, {
         'access-control-allow-origin': '*',
         'cache-control': ' max-age=300',
