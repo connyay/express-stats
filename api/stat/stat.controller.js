@@ -68,7 +68,12 @@ exports.create = function(req, res) {
 
 exports.badge = function(req, res) {
     var svgBadge = shields.svg(' Beans Mapped ', cachedCount, 'green', 'flat');
-    res.send(svgBadge);
+    res.writeHead(200, {
+        'access-control-allow-origin': '*',
+        'cache-control': ' max-age=300',
+        'Content-Type': 'image/svg+xml'
+    });
+    res.end(svgBadge);
 };
 
 exports.count = function(req, res) {
