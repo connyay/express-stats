@@ -6,6 +6,7 @@ var controller = require('./stat.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/badge', controller.badge);
 router.get('/count', controller.count);
 router.post('/', controller.create);
 
